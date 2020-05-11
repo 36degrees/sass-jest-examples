@@ -95,3 +95,22 @@ describe('functions/_half.scss', () => {
     })
   })
 })
+
+// Testing mixins
+
+describe('mixins/_enhance.scss', () => {
+  it('makes everything awesome', async () => {
+    const data = `
+      @import "mixins/enhance";
+
+      .foo {
+        @include enhance;
+      }
+    `
+
+    return render({ data }).then(output => {
+      expect(output.css.toString().trim())
+        .toBe(".foo { font-family: 'Comic Sans MS' !important; color: hotpink !important; }")
+    })
+  })
+})
