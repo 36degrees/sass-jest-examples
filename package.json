@@ -15,9 +15,12 @@
   "homepage": "https://github.com/36degrees/sass-jest-examples#readme",
   "scripts": {
     "lint": "standard",
-    "test": "true"
+    "test": "jest"
   },
   "devDependencies": {
+    "glob": "^7.1.6",
+    "jest": "^26.0.1",
+    "node-sass": "^4.14.1",
     "standard": "^14.3.3"
   }
 }

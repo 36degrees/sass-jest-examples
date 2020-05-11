@@ -1,0 +1,13 @@
+@import "../settings";
+
+.diamond {
+  box-sizing: border-box;
+  width: 141px;
+  height: 141px;
+
+  background: $background-color;
+  border: $border-width solid $border-color;
+
+  transform:  translate(100px, 0) rotate(45deg);
+  transform-origin: top left;
+}

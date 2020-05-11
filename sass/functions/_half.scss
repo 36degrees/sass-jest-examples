@@ -1,0 +1,11 @@
+@function half($number) {
+    @if not (type-of($number) == 'number') {
+        @error "Cannot half something which is not a number!";
+    }
+
+    @if ($number % 2 > 0) {
+        @warn "Halving #{$number} returns a non-whole number";
+    }
+
+    @return $number / 2;
+}
