@@ -1,0 +1,16 @@
+{
+  "name": "sass-jest-examples",
+  "private": true,
+  "version": "1.0.0",
+  "description": "A set of examples showing how to use Jest to test your Sass.",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/36degrees/sass-jest-examples.git"
+  },
+  "author": "Oliver Byford <o@byford.org>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/36degrees/sass-jest-examples/issues"
+  },
+  "homepage": "https://github.com/36degrees/sass-jest-examples#readme"
+}
