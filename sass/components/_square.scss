@@ -1,0 +1,10 @@
+@import "../settings";
+
+.square {
+  box-sizing: border-box;
+  width: 200px;
+  height: 200px;
+
+  background: $background-color;
+  border: $border-width solid $border-color;
+}
