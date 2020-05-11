@@ -1,6 +1,7 @@
 /* eslint-env jest */
 
 const glob = require('glob')
+const sass = require('node-sass')
 
 const { render } = require('./helpers')
 
@@ -36,3 +37,61 @@ describe('sass/_settings.scss', () => {
   })
 })
 
+// Testing Sass functions
+
+describe('functions/_half.scss', () => {
+  it('halves a given even number', async () => {
+    const data = `
+      @import "functions/half";
+
+      .foo {
+        width: half(10px);
+      }
+    `
+
+    return render({ data }).then(output => {
+      expect(output.css.toString().trim()).toBe('.foo { width: 5px; }')
+    })
+  })
+
+  it('errors when trying to half something that is not a number', async () => {
+    const data = `
+      @import "functions/half";
+
+      .foo {
+        width: half("trollolol");
+      }
+    `
+
+    return expect(render({ data })).rejects.toThrow(
+      'Cannot half something which is not a number!'
+    )
+  })
+
+  it('warns when result is not a whole number', async () => {
+    const data = `
+      @import "functions/half";
+
+      .foo {
+        width: half(9px);
+      }
+    `
+
+    // Create a mock warn function that we can use to override the native @warn
+    // function, that we can make assertions about post-render.
+    const mockWarnFunction = jest.fn()
+      .mockReturnValue(sass.NULL)
+
+    return render({
+      data,
+      functions: {
+        '@warn': mockWarnFunction
+      }
+    }).then(() => {
+      // Expect our mocked @warn function to have been called once with a single
+      // argument, which should be the deprecation notice
+      return expect(mockWarnFunction.mock.calls[0][0].getValue())
+        .toEqual('Halving 9px returns a non-whole number')
+    })
+  })
+})

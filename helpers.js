@@ -5,6 +5,7 @@ const sass = require('node-sass')
 module.exports.render = (options) => {
   return util.promisify(sass.render)({
     includePaths: ['./sass'],
+    outputStyle: 'compact',
     ...options
   })
 }
