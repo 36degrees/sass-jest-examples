@@ -12,5 +12,8 @@
   "bugs": {
     "url": "https://github.com/36degrees/sass-jest-examples/issues"
   },
-  "homepage": "https://github.com/36degrees/sass-jest-examples#readme"
+  "homepage": "https://github.com/36degrees/sass-jest-examples#readme",
+  "scripts": {
+    "test": "true"
+  }
 }
