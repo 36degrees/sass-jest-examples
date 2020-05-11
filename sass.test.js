@@ -23,3 +23,16 @@ describe('sass/components/', () => {
     return render({ file })
   })
 })
+
+// Test that the settings file does not output any CSS
+
+describe('sass/_settings.scss', () => {
+  it('does not output CSS', async () => {
+    return render({
+      file: 'sass/_settings.scss'
+    }).then(output => {
+      expect(output.css.toString()).toEqual('')
+    })
+  })
+})
+
